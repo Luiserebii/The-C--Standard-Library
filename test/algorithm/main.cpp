@@ -15,6 +15,7 @@ using std::back_inserter;
 void equal(Mint& m);
 void find(Mint& m);
 void copy(Mint& m);
+void search(Mint& m);
 
 int main() {
 
@@ -24,6 +25,7 @@ int main() {
     equal(m);
     find(m);
     copy(m);
+    search(m);
 
     return m.end();
 }
@@ -92,4 +94,21 @@ void copy(Mint& m) {
 
     m.assert(std::equal(v1.begin(), v1.end(), v3.begin()), "copy() copies all values successfully");
     m.assert(std::equal(v2.begin(), v2.end(), v3.begin()), "copy() mirrors standard library functionality");
+}
+
+void search(Mint& m) {
+    m.minititle("search(b, e, b2, e2)");
+    vector<int> v1, v2, v3;
+    v1.push_back(1);
+    v1.push_back(2), v2.push_back(2), v3.push_back(2);
+    v1.push_back(4), v2.push_back(4), v3.push_back(9);
+    v1.push_back(9);
+    v1.push_back(16);
+
+    int ptrpos = 1;
+    vector<int>::iterator stdres = std::search(v1.begin(), v1.end, v2.begin(), v2.end());
+    vector<int>::iterator lsbres = lsb::search(v1.begin(), v1.end, v2.begin(), v2.end());
+
+    m.assert(lsbres == v.begin() + ptrpos, "search() returns the correct iterator for a range that exists");
+    m.assert(stdres == lsbres, "search() mirrors standard library functionality");
 }
