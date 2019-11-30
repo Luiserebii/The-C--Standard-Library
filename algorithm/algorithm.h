@@ -43,9 +43,19 @@ In search(In begin, In end, In begin2, In end2) {
     }
     //Ensure we search within the range
     while(begin + size <= end) {
-
+        In b2;
+        for(In b = begin, b2 = begin2; b2 != end; ++begin, ++b2) {
+            if(*begin != *b2) {
+                break;
+            }
+        }
+        //If we hit the end, we found it~
+        if(*b2 == *end) {
+            return begin;
+        }
+        ++begin;
     }
-    return isFound;
+    return end;
 }
 
 #endif
