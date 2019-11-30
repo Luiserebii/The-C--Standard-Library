@@ -1,5 +1,5 @@
-#include "lib/mint/mint.h"
-#include "../vector/vector.h"
+#include "../lib/mint/mint.h"
+#include "../../vector/vector.h"
 
 #include <iostream>
 #include <string>
@@ -12,7 +12,7 @@ void addingElements(Mint& m);
 int main() {
 
     Mint m;
-    m.title("vector");
+    m.title("<vector>");
 
     initialize(m);
     addingElements(m);
