@@ -2,16 +2,16 @@
 #include "../../algorithm/algorithm.h"
 
 #include <iostream>
-//#include <algorithm>
+#include <algorithm>
 #include <vector>
 
 using lsb::equal;
-using lsb::find;
 using lsb::copy;
 
 using std::vector;
 
 void equal(Mint& m);
+void find(Mint& m);
 
 int main() {
 
@@ -19,6 +19,7 @@ int main() {
     m.title("<algorithm>");
 
     equal(m);
+    find(m);
 
     return m.end();
 }
@@ -43,5 +44,32 @@ void equal(Mint& m) {
     lsbres = equal(v1.begin(), v1.end(), v3.begin());
 
     m.equal(stdres, lsbres, "equal() returns false for unequal vectors");
+
+}
+
+void find(Mint& m) {
+    m.minititle("find(b, e, t)");
+    vector<int> v;
+    v.push_back(1);
+    v.push_back(2);    
+    v.push_back(4);    
+    v.push_back(9);
+    v.push_back(16);    
+    
+    int testVal = 9;
+    int ptrpos = 4;
+    vector<int>::iterator stdres = std::find(v.begin(), v.end(), testVal);
+    vector<int>::iterator lsbres = lsb::find(v.begin(), v.end(), testVal);
+
+    m.assert(lsbres == v.begin() + ptrpos, "find() returns the correct iterator for a value that exists");
+    m.assert(stdres == lsbres, "find() mirrors standard library functionality");
+    
+    //Test for val which does not exist
+    testVal = 100;
+    stdres = std::find(v.begin(), v.end(), testVal);
+    lsbres = lsb::find(v.begin(), v.end(), testVal);
+
+    m.assert(lsbres == v.end(), "find() returns the correct iterator (last past one) for a value that does not exist");
+    m.assert(stdres == lsbres, "find() mirrors standard library functionality");
 
 }
