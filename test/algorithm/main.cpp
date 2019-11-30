@@ -57,7 +57,7 @@ void find(Mint& m) {
     v.push_back(16);    
     
     int testVal = 9;
-    int ptrpos = 4;
+    int ptrpos = 3;
     vector<int>::iterator stdres = std::find(v.begin(), v.end(), testVal);
     vector<int>::iterator lsbres = lsb::find(v.begin(), v.end(), testVal);
 
