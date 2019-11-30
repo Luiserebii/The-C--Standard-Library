@@ -7,6 +7,7 @@
 using namespace lsb;
 
 void initialize(Mint& m);
+void addingElements(Mint& m);
 
 int main() {
 
@@ -30,7 +31,7 @@ void addingElements(Mint& m) {
     m.minititle("Adding elements");
     vector<int> v;
     int el1 = 10;
-    m.push_back(el1);
+    v.push_back(el1);
     m.equal(v.size(), 1UL, "Vector has size 1 after one push_back()");
 
 }

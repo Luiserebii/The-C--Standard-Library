@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <memory>
+#include <stdexcept>
 
 namespace lsb {
 
@@ -14,7 +15,9 @@ class vector {
 
         vector(): head(0), avail(0), tail(0) { } 
         
-        size_t size();
+        size_type size();
+        
+        T& at(size_type n);
         void push_back(T e);
 
     private:
@@ -33,6 +36,15 @@ class vector {
 template <class T>
 typename vector<T>::size_type vector<T>::size() {
     return avail - head;
+}
+
+template <class T>
+T& vector<T>::at(typename vector<T>::size_type n) {
+    if(head + n < avail) {
+        return head + n;
+    } else {
+        throw std::out_of_range("at(): Attempting to access element out of bounds!");
+    }
 }
 
 template <class T>
