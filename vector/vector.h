@@ -14,6 +14,9 @@ class vector {
         typedef T* iterator;
         typedef const T* const_iterator;
 
+        typedef T& reference;
+        typedef const T& const_reference;
+
         typedef size_t size_type;
 
         /**
@@ -44,6 +47,7 @@ class vector {
          */
         size_type size() const;
         bool empty() const;
+        size_type capacity() const;
 
         /**
          * Element access
@@ -149,6 +153,11 @@ typename vector<T>::size_type vector<T>::size() const {
 }
 
 template <class T>
+typename vector<T>::size_type vector<T>::capacity() const {
+    return tail - head;
+}
+
+template <class T>
 bool vector<T>::empty() const {
     return size() == 0;
 }
@@ -159,7 +168,7 @@ bool vector<T>::empty() const {
  */
 
 template <class T>
-T& vector<T>::operator[](size_type n) {
+typename vector<T>::reference vector<T>::operator[](size_type n) {
     if(head + n < avail) {
         return *(head + n);
     } else {
@@ -168,7 +177,7 @@ T& vector<T>::operator[](size_type n) {
 }
 
 template <class T>
-const T& vector<T>::operator[](size_type n) const {
+typename vector<T>::const_reference vector<T>::operator[](size_type n) const {
     if(head + n < avail) {
         return *(head + n);
     } else {
@@ -177,12 +186,12 @@ const T& vector<T>::operator[](size_type n) const {
 }
 
 template <class T>
-T& vector<T>::at(typename vector<T>::size_type n) {
+typename vector<T>::reference vector<T>::at(typename vector<T>::size_type n) {
     return (*this)[n];
 }
 
 template <class T>
-const T& vector<T>::at(typename vector<T>::size_type n) const {
+typename vector<T>::const_reference vector<T>::at(typename vector<T>::size_type n) const {
     return (*this)[n];
 }
 
