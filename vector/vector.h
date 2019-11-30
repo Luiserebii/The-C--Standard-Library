@@ -52,11 +52,17 @@ class vector {
         /**
          * Element access
          */
-        T& operator[](size_type n);
-        const T& operator[](size_type n) const;
+        reference operator[](size_type n);
+        const_reference operator[](size_type n) const;
 
-        T& at(size_type n);
-        const T& at(size_type n) const;
+        reference at(size_type n);
+        const_reference at(size_type n) const;
+
+        reference front();
+        const_reference front() const;
+
+        reference back();
+        const_reference back() const;
 
         /**
          * Modifiers
@@ -166,7 +172,6 @@ bool vector<T>::empty() const {
 /**
  * Element access
  */
-
 template <class T>
 typename vector<T>::reference vector<T>::operator[](size_type n) {
     if(head + n < avail) {
@@ -193,6 +198,26 @@ typename vector<T>::reference vector<T>::at(typename vector<T>::size_type n) {
 template <class T>
 typename vector<T>::const_reference vector<T>::at(typename vector<T>::size_type n) const {
     return (*this)[n];
+}
+
+template <class T>
+typename vector<T>::reference vector<T>::front() {
+    return *head;
+}
+
+template <class T>
+typename vector<T>::const_reference vector<T>::front() const {
+    return *head;
+}
+
+template <class T>
+typename vector<T>::reference vector<T>::back() {
+    return *(tail - 1);
+}
+
+template <class T>
+typename vector<T>::const_reference vector<T>::front() const {
+    return *(tail - 1);
 }
 
 /**
