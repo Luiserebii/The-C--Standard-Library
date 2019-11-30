@@ -54,15 +54,24 @@ vector<T>::vector(): head(0), avail(0), tail(0) {
 }
 
 //Copy, assign, destroy
-vector(const vector&) {
-
+template <class T>
+vector<T>::vector(const vector& rhs) {
+    
 }
 
-vector& operator=(const vector&) {
-
+template <class T>
+vector<T>& vector<T>::operator=(const vector& rhs) {
+    //Check for self-assignment
+    if(&rhs != this) {
+        //Destroy the left-hand side
+        destroy();
+        //Construct from the right
+        construct(rhs.begin(), rhs.end());
+    }
 }
 
-~vector() {
+template <class T>
+vector<T>::~vector() {
     destroy();
 }
 
