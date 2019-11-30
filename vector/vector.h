@@ -72,6 +72,8 @@ class vector {
          * Modifiers
          */
         void push_back(T e);
+        void pop_back();
+        void clear();
 
         /**
          * Allocator
@@ -221,12 +223,12 @@ typename vector<T>::const_reference vector<T>::front() const {
 
 template <class T>
 typename vector<T>::reference vector<T>::back() {
-    return *(tail - 1);
+    return *(avail - 1);
 }
 
 template <class T>
 typename vector<T>::const_reference vector<T>::back() const {
-    return *(tail - 1);
+    return *(avail - 1);
 }
 
 /**
@@ -236,6 +238,19 @@ typename vector<T>::const_reference vector<T>::back() const {
 template <class T>
 void vector<T>::push_back(T e) {
     append(e);
+}
+
+template <class T>
+void vector<T>::pop_back() {
+    if(size() != 0) {
+        alloc.destroy(avail - 1);
+        --avail;
+    }
+}
+
+template <class T>
+void vector<T>::clear() {
+    destroy();
 }
 
 /**
