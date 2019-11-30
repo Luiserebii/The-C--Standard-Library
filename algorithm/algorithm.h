@@ -32,8 +32,6 @@ Out copy(In begin, In end, Out dest) {
     return dest;
 }
 
-}
-
 template <class In>
 In search(In begin, In end, In begin2, In end2) {
     size_t size = end2 - begin2;
@@ -57,5 +55,8 @@ In search(In begin, In end, In begin2, In end2) {
     }
     return end;
 }
+
+}
+
 
 #endif

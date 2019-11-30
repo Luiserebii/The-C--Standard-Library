@@ -106,15 +106,15 @@ void search(Mint& m) {
     v1.push_back(16);
 
     int ptrpos = 1;
-    vector<int>::iterator stdres = std::search(v1.begin(), v1.end, v2.begin(), v2.end());
-    vector<int>::iterator lsbres = lsb::search(v1.begin(), v1.end, v2.begin(), v2.end());
+    vector<int>::iterator stdres = std::search(v1.begin(), v1.end(), v2.begin(), v2.end());
+    vector<int>::iterator lsbres = lsb::search(v1.begin(), v1.end(), v2.begin(), v2.end());
 
-    m.assert(lsbres == v.begin() + ptrpos, "search() returns the correct iterator for a range that exists");
+    m.assert(lsbres == v1.begin() + ptrpos, "search() returns the correct iterator for a range that exists");
     m.assert(stdres == lsbres, "search() mirrors standard library functionality");
 
-    stdres = std::search(v1.begin(), v1.end, v3.begin(), v3.end());
-    lsbres = lsb::search(v1.begin(), v1.end, v3.begin(), v3.end());
+    stdres = std::search(v1.begin(), v1.end(), v3.begin(), v3.end());
+    lsbres = lsb::search(v1.begin(), v1.end(), v3.begin(), v3.end());
     
-    m.assert(lsbres == v.end(), "search() returns the last iterator for a range that doesn't exist");
+    m.assert(lsbres == v1.end(), "search() returns the last iterator for a range that doesn't exist");
     m.assert(stdres == lsbres, "search() mirrors standard library functionality");
 }
