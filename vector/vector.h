@@ -16,30 +16,47 @@ class vector {
 
         typedef size_t size_type;
 
+        /**
+         * Constructors
+         */
         vector();
         vector(size_type n, const T& val);
         vector(T* b, T* e);
 
-        //Copy, assign, destroy
+        /**
+         * Copy, assign, destroy
+         */
         vector(const vector&);
         vector& operator=(const vector&);
         ~vector();
 
-        T& operator[](size_type n);
-        const T& operator[](size_type n) const;
-
-        size_type size() const;
-        
-        T& at(size_type n);
-        const T& at(size_type n) const;
+        /**
+         * Iterators
+         */
         iterator begin();
         const_iterator begin() const;
-
-        bool empty() const;
 
         iterator end();
         const_iterator end() const;
 
+        /**
+         * Capacity
+         */
+        size_type size() const;
+        bool empty() const;
+
+        /**
+         * Element access
+         */
+        T& operator[](size_type n);
+        const T& operator[](size_type n) const;
+
+        T& at(size_type n);
+        const T& at(size_type n) const;
+
+        /**
+         * Modifiers
+         */
         void push_back(T e);
 
     private:
@@ -57,7 +74,9 @@ class vector {
 };
 
 
-//Constructors
+/**
+ * Constructors
+ */
 template <class T>
 vector<T>::vector(): head(0), avail(0), tail(0) {
     
@@ -73,7 +92,9 @@ vector<T>::vector(T* b, T* e) {
     construct(b, e);
 }
 
-//Copy, assign, destroy
+/**
+ * Copy, assign, destroy
+ */
 template <class T>
 vector<T>::vector(const vector& rhs) {
     construct(rhs.begin(), rhs.end());
@@ -95,10 +116,47 @@ vector<T>::~vector() {
     destroy();
 }
 
+/**
+ * Iterators
+ */
+
+template <class T>
+typename vector<T>::iterator vector<T>::begin() {
+    return head;
+}
+
+template <class T>
+typename vector<T>::const_iterator vector<T>::begin() const {
+    return head;
+}
+
+template <class T>
+typename vector<T>::iterator vector<T>::end() {
+    return avail;
+}
+
+template <class T>
+typename vector<T>::const_iterator vector<T>::end() const {
+    return avail;
+}
+
+/**
+ * Capacity
+ */
 template <class T>
 typename vector<T>::size_type vector<T>::size() const {
     return avail - head;
 }
+
+template <class T>
+bool vector<T>::empty() const {
+    return size() == 0;
+}
+
+
+/**
+ * Element access
+ */
 
 template <class T>
 T& vector<T>::operator[](size_type n) {
@@ -128,35 +186,18 @@ const T& vector<T>::at(typename vector<T>::size_type n) const {
     return (*this)[n];
 }
 
-template <class T>
-typename vector<T>::iterator vector<T>::begin() {
-    return head;
-}
-
-template <class T>
-typename vector<T>::const_iterator vector<T>::begin() const {
-    return head;
-}
-
-template <class T>
-typename vector<T>::iterator vector<T>::end() {
-    return avail;
-}
-
-template <class T>
-typename vector<T>::const_iterator vector<T>::end() const {
-    return avail;
-}
-
-template <class T>
-bool vector<T>::empty() const {
-    return size() == 0;
-}
+/**
+ * Modifiers
+ */
 
 template <class T>
 void vector<T>::push_back(T e) {
     append(e);
 }
+
+/**
+ * Private - Implementation
+ */
 
 template <class T>
 void vector<T>::append(T e) {
