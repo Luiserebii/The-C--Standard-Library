@@ -24,7 +24,7 @@ class vector {
         size_type size() const;
         
         T& at(size_type n);
-        T& at(size_type n) const;
+        const T& at(size_type n) const;
 
         void push_back(T e);
 
@@ -47,12 +47,31 @@ typename vector<T>::size_type vector<T>::size() const {
 }
 
 template <class T>
-T& vector<T>::at(typename vector<T>::size_type n) {
+T& vector<T>::operator[](size_type n) {
     if(head + n < avail) {
         return *(head + n);
     } else {
         throw std::out_of_range("at(): Attempting to access element out of bounds!");
     }
+}
+
+template <class T>
+const T& vector<T>::operator[](size_type n) const {
+    if(head + n < avail) {
+        return *(head + n);
+    } else {
+        throw std::out_of_range("at(): Attempting to access element out of bounds!");
+    }
+}
+
+template <class T>
+T& vector<T>::at(typename vector<T>::size_type n) {
+    return (*this)[n];
+}
+
+template <class T>
+const T& vector<T>::at(typename vector<T>::size_type n) const {
+    return (*this)[n];
 }
 
 template <class T>
