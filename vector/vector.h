@@ -58,7 +58,7 @@ void vector<T>::append(T e) {
     if(avail == tail) {
         size_type old_size = size();
         //Double size
-        size_type sz = std::max(1, 2 * size());
+        size_type sz = std::max(1UL, 2 * size());
         //Allocate new space
         T* n = alloc.allocate(sz);
         //Copy
@@ -87,7 +87,7 @@ void vector<T>::destroy() {
     while(h != avail) {
         alloc.destroy(h++);
     }
-    alloc.destroy(head, sz);
+    alloc.deallocate(head, sz);
     head = avail = tail = 0;
 }
 
