@@ -1,0 +1,29 @@
+version: 2
+
+aliases:
+  # Alias for any default options
+  - &defaults
+    docker:
+      - image: debian:stretch
+
+jobs:
+  # Building and running examples
+  tests:
+    <<: *defaults
+    steps:
+      - run: 
+          name: Install gcc
+          command: apt-get update && apt-get install -y gcc g++
+      - checkout
+      - run:
+          name: <vector>
+          command: cd test/vector && ./c.sh
+      - run:
+          name: <algorithm>
+          command: cd test/algorithm && ./c.sh
+
+workflows:
+  version: 2
+  everything:
+    jobs: # For reference, all jobs run in parallel
+      - tests
