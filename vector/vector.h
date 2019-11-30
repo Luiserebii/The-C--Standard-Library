@@ -31,7 +31,7 @@ class vector {
 };
 
 template <class T>
-size_type vector<T>::size() {
+typename vector<T>::size_type vector<T>::size() {
     return avail - head;
 }
 
@@ -66,7 +66,6 @@ void vector<T>::append(T e) {
         alloc.construct(avail, e);
         ++avail;
     }
-
 }
 
 template <class T>
@@ -77,6 +76,7 @@ void vector<T>::destroy() {
         alloc.destroy(h++);
     }
     alloc.destroy(head, sz);
+    head = avail = tail = 0;
 }
 
 }
