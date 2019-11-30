@@ -17,6 +17,7 @@ class vector {
         typedef size_t size_type;
 
         vector();
+        vector(T* b, T* e);
 
         //Copy, assign, destroy
         vector(const vector&);
@@ -30,6 +31,11 @@ class vector {
         
         T& at(size_type n);
         const T& at(size_type n) const;
+        iterator begin();
+        const_iterator begin() const;
+
+        iterator end();
+        const_iterator end() const;
 
         void push_back(T e);
 
@@ -40,7 +46,7 @@ class vector {
 
         std::allocator<T> alloc;
 
-        void construct();
+        void construct(T* b, T* e);
         void append(T e);
         void destroy();
 
@@ -51,6 +57,11 @@ class vector {
 template <class T>
 vector<T>::vector(): head(0), avail(0), tail(0) {
     
+}
+
+template <class T>
+vector<T>::vector(T* b, T* e) {
+    construct(b, e);
 }
 
 //Copy, assign, destroy
@@ -109,6 +120,26 @@ const T& vector<T>::at(typename vector<T>::size_type n) const {
 }
 
 template <class T>
+typename vector<T>::iterator vector<T>::begin() {
+    return head;
+}
+
+template <class T>
+typename vector<T>::const_iterator vector<T>::begin() const {
+    return head;
+}
+
+template <class T>
+typename vector<T>::iterator vector<T>::end() {
+    return avail;
+}
+
+template <class T>
+typename vector<T>::const_iterator vector<T>::end() const {
+    return avail;
+}
+
+template <class T>
 void vector<T>::push_back(T e) {
     append(e);
 }
@@ -139,6 +170,16 @@ void vector<T>::append(T e) {
         alloc.construct(avail, e);
         ++avail;
     }
+}
+
+template <class T>
+void vector<T>::construct(T* b, T* e) {
+    //Allocate
+    typename vector<T>::size_type sz = e - b;
+    T* n = alloc.allocate(sz);
+    std::uninitialized_copy(b, e, n);
+    head = n;
+    avail = tail = n + sz;
 }
 
 template <class T>
