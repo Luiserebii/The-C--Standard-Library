@@ -20,13 +20,15 @@ class vector {
         void construct();
         void destroy();
 
-}
+};
 
-}
 
 template <class T>
-vector::push_back() {
+void vector<T>::push_back(T e) {
     
+}
+
+
 }
 
 #endif
