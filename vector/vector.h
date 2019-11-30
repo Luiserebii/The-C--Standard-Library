@@ -41,7 +41,7 @@ typename vector<T>::size_type vector<T>::size() {
 template <class T>
 T& vector<T>::at(typename vector<T>::size_type n) {
     if(head + n < avail) {
-        return head + n;
+        return *(head + n);
     } else {
         throw std::out_of_range("at(): Attempting to access element out of bounds!");
     }
