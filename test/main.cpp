@@ -33,5 +33,5 @@ void addingElements(Mint& m) {
     int el1 = 10;
     v.push_back(el1);
     m.equal(v.size(), 1UL, "Vector has size 1 after one push_back()");
-    m.equal(v.at(0), el1, "Vector element added is as expected (using at())");
+    m.equal(v[0], el1, "Vector element added is as expected (using operator[])");
 }

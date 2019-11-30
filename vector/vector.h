@@ -16,7 +16,12 @@ class vector {
 
         typedef size_t size_type;
 
-        vector(): head(0), avail(0), tail(0) { } 
+        vector();
+
+        //Copy, assign, destroy
+        vector(const vector&);
+        vector& operator=(const vector&);
+        ~vector();
 
         T& operator[](size_type n);
         const T& operator[](size_type n) const;
@@ -40,6 +45,26 @@ class vector {
         void destroy();
 
 };
+
+
+//Constructors
+template <class T>
+vector<T>::vector(): head(0), avail(0), tail(0) {
+    
+}
+
+//Copy, assign, destroy
+vector(const vector&) {
+
+}
+
+vector& operator=(const vector&) {
+
+}
+
+~vector() {
+    destroy();
+}
 
 template <class T>
 typename vector<T>::size_type vector<T>::size() const {
