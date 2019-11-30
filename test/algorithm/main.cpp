@@ -108,6 +108,7 @@ void search(Mint& m) {
     int ptrpos = 1;
     vector<int>::iterator stdres = std::search(v1.begin(), v1.end(), v2.begin(), v2.end());
     vector<int>::iterator lsbres = lsb::search(v1.begin(), v1.end(), v2.begin(), v2.end());
+
     m.assert(lsbres == v1.begin() + ptrpos, "search() returns the correct iterator for a range that exists");
     m.assert(stdres == lsbres, "search() mirrors standard library functionality");
 
@@ -116,4 +117,12 @@ void search(Mint& m) {
     
     m.assert(lsbres == v1.end(), "search() returns the last iterator for a range that doesn't exist");
     m.assert(stdres == lsbres, "search() mirrors standard library functionality");
+
+    //Test when range being searched for is too large
+    stdres = std::search(v2.begin(), v2.end(), v1.begin(), v1.end());
+    lsbres = lsb::search(v2.begin(), v2.end(), v1.begin(), v1.end());
+    
+    m.assert(lsbres == v2.end(), "search() returns the last iterator for a range too large to search for");
+    m.assert(stdres == lsbres, "search() mirrors standard library functionality");
+
 }
