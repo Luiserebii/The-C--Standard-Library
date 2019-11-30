@@ -107,9 +107,7 @@ void search(Mint& m) {
 
     int ptrpos = 1;
     vector<int>::iterator stdres = std::search(v1.begin(), v1.end(), v2.begin(), v2.end());
-    std::cout << "fuck" << std::endl;
     vector<int>::iterator lsbres = lsb::search(v1.begin(), v1.end(), v2.begin(), v2.end());
-    std::cout << "o shit" << std::endl;
     m.assert(lsbres == v1.begin() + ptrpos, "search() returns the correct iterator for a range that exists");
     m.assert(stdres == lsbres, "search() mirrors standard library functionality");
 

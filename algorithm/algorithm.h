@@ -2,7 +2,7 @@
 #define LUISEREBII_ALGORITHM_H
 
 #include <stdexcept>
-#include <iostream>
+
 namespace lsb {
 
 template <class In>
@@ -37,25 +37,18 @@ In search(In begin, In end, In begin2, In end2) {
     size_t size = end2 - begin2;
     //Check to see that size is larger enough
     if(end - begin < size) {
-        throw std::domain_error("Range to search for too larger");
+        throw std::domain_error("Range to search for too large");
     }
-    std::cout << "1" << std::endl;
     //Ensure we search within the range
     while(begin + size <= end) {
-        In b2;
-        std::cout << "*begin: " << *begin << std::endl;
-        for(In b = begin, b2 = begin2; b2 != end2; ++b, ++b2) {
-            std::cout << "b: " << &b << "*b: " << *b << std::endl;
-            std::cout << "b2: " <<  &b2 << "*b2: " << *b2 << std::endl;
+        In b2 = begin2;
+        for(In b = begin; b2 != end2; ++b, ++b2) {
             if(*b != *b2) {
                 break;
             }
         }
-        std::cout << "We're here?" << std::endl;
         //If we hit the end, we found it~
-        std::cout << "b2: " << &b2 << std::endl << "end2: " << &end2 << std::endl;
         if(b2 == end2) {
-            std::cout << "FOUND, RETURNING" << std::endl;
             return begin;
         }
         ++begin;
