@@ -111,4 +111,10 @@ void search(Mint& m) {
 
     m.assert(lsbres == v.begin() + ptrpos, "search() returns the correct iterator for a range that exists");
     m.assert(stdres == lsbres, "search() mirrors standard library functionality");
+
+    stdres = std::search(v1.begin(), v1.end, v3.begin(), v3.end());
+    lsbres = lsb::search(v1.begin(), v1.end, v3.begin(), v3.end());
+    
+    m.assert(lsbres == v.end(), "search() returns the last iterator for a range that doesn't exist");
+    m.assert(stdres == lsbres, "search() mirrors standard library functionality");
 }
