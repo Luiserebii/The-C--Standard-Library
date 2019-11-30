@@ -30,4 +30,6 @@ Out copy(In begin, In end, Out dest) {
     return dest;
 }
 
+}
+
 #endif
