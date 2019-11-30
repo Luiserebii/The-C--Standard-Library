@@ -67,7 +67,7 @@ vector<T>::vector(T* b, T* e) {
 //Copy, assign, destroy
 template <class T>
 vector<T>::vector(const vector& rhs) {
-    
+    construct(rhs.begin(), rhs.end());
 }
 
 template <class T>
