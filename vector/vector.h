@@ -17,6 +17,7 @@ class vector {
         typedef size_t size_type;
 
         vector();
+        vector(size_type n, const T& val);
         vector(T* b, T* e);
 
         //Copy, assign, destroy
@@ -34,6 +35,8 @@ class vector {
         iterator begin();
         const_iterator begin() const;
 
+        bool empty() const;
+
         iterator end();
         const_iterator end() const;
 
@@ -47,6 +50,7 @@ class vector {
         std::allocator<T> alloc;
 
         void construct(T* b, T* e);
+        void construct(size_type n, const T& val);
         void append(T e);
         void destroy();
 
@@ -57,6 +61,11 @@ class vector {
 template <class T>
 vector<T>::vector(): head(0), avail(0), tail(0) {
     
+}
+
+template <class T>
+vector<T>::vector(size_type n, const T& val) {
+    construct(n, val);
 }
 
 template <class T>
@@ -140,6 +149,11 @@ typename vector<T>::const_iterator vector<T>::end() const {
 }
 
 template <class T>
+bool vector<T>::empty() const {
+    return size() == 0;
+}
+
+template <class T>
 void vector<T>::push_back(T e) {
     append(e);
 }
@@ -176,10 +190,16 @@ template <class T>
 void vector<T>::construct(T* b, T* e) {
     //Allocate
     typename vector<T>::size_type sz = e - b;
-    T* n = alloc.allocate(sz);
-    std::uninitialized_copy(b, e, n);
-    head = n;
-    avail = tail = n + sz;
+    head = alloc.allocate(sz);
+    avail = tail = head + sz;
+    std::uninitialized_copy(b, e, head);
+}
+
+template <class T>
+void vector<T>::construct(size_type n, const T& val) {
+    head = alloc.allocate(n);
+    avail = tail = head + n;
+    std::uninitialized_fill(head, avail, val);
 }
 
 template <class T>

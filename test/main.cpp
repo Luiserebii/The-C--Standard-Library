@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-using namespace lsb;
+using lsb::vector;
 
 void initialize(Mint& m);
 void addingElements(Mint& m);
@@ -35,3 +35,5 @@ void addingElements(Mint& m) {
     m.equal(v.size(), 1UL, "Vector has size 1 after one push_back()");
     m.equal(v[0], el1, "Vector element added is as expected (using operator[])");
 }
+
+
