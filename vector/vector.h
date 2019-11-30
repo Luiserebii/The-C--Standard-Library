@@ -216,7 +216,7 @@ typename vector<T>::reference vector<T>::back() {
 }
 
 template <class T>
-typename vector<T>::const_reference vector<T>::front() const {
+typename vector<T>::const_reference vector<T>::back() const {
     return *(tail - 1);
 }
 
