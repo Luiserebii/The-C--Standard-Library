@@ -45,14 +45,17 @@ In search(In begin, In end, In begin2, In end2) {
         In b2;
         std::cout << "*begin: " << *begin << std::endl;
         for(In b = begin, b2 = begin2; b2 != end2; ++b, ++b2) {
-            std::cout << "*b2: " << *b2 << std::endl;
+            std::cout << "b: " << &b << "*b: " << *b << std::endl;
+            std::cout << "b2: " <<  &b2 << "*b2: " << *b2 << std::endl;
             if(*b != *b2) {
                 break;
             }
         }
         std::cout << "We're here?" << std::endl;
         //If we hit the end, we found it~
+        std::cout << "b2: " << &b2 << std::endl << "end2: " << &end2 << std::endl;
         if(b2 == end2) {
+            std::cout << "FOUND, RETURNING" << std::endl;
             return begin;
         }
         ++begin;
