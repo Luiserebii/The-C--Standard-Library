@@ -37,7 +37,7 @@ template <class In>
 In search(In begin, In end, In begin2, In end2) { 
     while(begin != end) {
         //If b == begin2, step into a loop to check each val, until b2 == e2
-        if(begin == begin2) {
+        if(*begin == *begin2) {
             In b2 = begin2;
             for(In b = begin; b2 != end2; ++b, ++b2) {
                 if(*b != *b2) {
