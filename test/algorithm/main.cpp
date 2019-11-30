@@ -4,11 +4,13 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <iterator>
 
 using lsb::equal;
 using lsb::copy;
 
 using std::vector;
+using std::back_inserter;
 
 void equal(Mint& m);
 void find(Mint& m);
@@ -71,5 +73,23 @@ void find(Mint& m) {
 
     m.assert(lsbres == v.end(), "find() returns the correct iterator (last past one) for a value that does not exist");
     m.assert(stdres == lsbres, "find() mirrors standard library functionality");
+
+}
+
+void copy(Mint& m) {
+    m.minititle("copy(b, e, d)");
+    vector<int> v1, v2, v3;
+    v.push_back(1);
+    v.push_back(2);    
+    v.push_back(4);    
+    v.push_back(9);
+    v.push_back(16);    
+
+    std::copy(v1.begin(), v1.end(), back_inserter(v2));
+    lsb::copy(v1.begin(), v1.end(), back_inserter(v3));
+
+    m.assert(std::equal(v1.begin(), v1.end(), v3.begin()), "copy() copies all values successfully");
+    m.assert(std::equal(v2.begin(), v2.end(), v3.begin()), "copy() mirrors standard library functionality");
+    
 
 }
