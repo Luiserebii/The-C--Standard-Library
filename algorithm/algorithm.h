@@ -1,6 +1,8 @@
 #ifndef LUISEREBII_ALGORITHM_H
 #define LUISEREBII_ALGORITHM_H
 
+#include <stdexcept>
+
 namespace lsb {
 
 template <class In>
@@ -30,6 +32,20 @@ Out copy(In begin, In end, Out dest) {
     return dest;
 }
 
+}
+
+template <class In>
+In search(In begin, In end, In begin2, In end2) {
+    size_t size = end2 - begin2;
+    //Check to see that size is larger enough
+    if(end - begin < size) {
+        throw std::domain_error("Range to search for too larger");
+    }
+    //Ensure we search within the range
+    while(begin + size <= end) {
+
+    }
+    return isFound;
 }
 
 #endif
