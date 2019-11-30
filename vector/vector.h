@@ -11,6 +11,8 @@ template <class T>
 class vector {
 
     public:
+        typedef T value_type;
+
         typedef T* iterator;
         typedef const T* const_iterator;
 
@@ -18,6 +20,8 @@ class vector {
         typedef const T& const_reference;
 
         typedef size_t size_type;
+
+        typedef std::allocator<T> allocator_type;
 
         /**
          * Constructors
@@ -68,6 +72,11 @@ class vector {
          * Modifiers
          */
         void push_back(T e);
+
+        /**
+         * Allocator
+         */
+        allocator_type get_allocator() const;
 
     private:
         T* head;
@@ -228,6 +237,15 @@ template <class T>
 void vector<T>::push_back(T e) {
     append(e);
 }
+
+/**
+ * Allocator
+ */
+template <class T>
+typename vector<T>::allocator_type vector<T>::get_allocator() const {
+    return alloc;
+}
+
 
 /**
  * Private - Implementation
