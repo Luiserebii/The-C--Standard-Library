@@ -11,13 +11,21 @@ template <class T>
 class vector {
 
     public:
+        typedef T* iterator;
+        typedef const T* const_iterator;
+
         typedef size_t size_type;
 
         vector(): head(0), avail(0), tail(0) { } 
-        
-        size_type size();
+
+        T& operator[](size_type n);
+        const T& operator[](size_type n) const;
+
+        size_type size() const;
         
         T& at(size_type n);
+        T& at(size_type n) const;
+
         void push_back(T e);
 
     private:
@@ -34,7 +42,7 @@ class vector {
 };
 
 template <class T>
-typename vector<T>::size_type vector<T>::size() {
+typename vector<T>::size_type vector<T>::size() const {
     return avail - head;
 }
 
