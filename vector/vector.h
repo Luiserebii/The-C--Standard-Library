@@ -44,14 +44,20 @@ template <class T>
 void vector<T>::append(T e) {
     //If capacity has been reached
     if(avail == tail) {
+        size_type old_size = size();
         //Double size
-        size = std::max(1, 2 * size());
+        size_type sz = std::max(1, 2 * size());
         //Allocate new space
-        T* n = alloc.allocate(size);
+        T* n = alloc.allocate(sz);
         //Copy
         std::uninitialized_copy(head, avail, n);
         //Destroy
         destroy();
+        //Set new values appropriately
+        head = n;
+        avail = n + old_size;
+        tail = n + sz;
+
         //Append
         alloc.construct(avail, e);
         ++avail;
@@ -61,6 +67,16 @@ void vector<T>::append(T e) {
         ++avail;
     }
 
+}
+
+template <class T>
+void vector<T>::destroy() {
+    size_type sz = size();
+    T* h = head;
+    while(h != avail) {
+        alloc.destroy(h++);
+    }
+    alloc.destroy(head, sz);
 }
 
 }
