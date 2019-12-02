@@ -1,1 +1,2 @@
-g++ *.cpp && ./a.out
+#!/bin/bash
+g++ main.cpp && ./a.out

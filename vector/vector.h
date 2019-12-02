@@ -50,6 +50,7 @@ class vector {
          * Capacity
          */
         size_type size() const;
+        size_type max_size() const;
         bool empty() const;
         size_type capacity() const;
 
@@ -167,6 +168,11 @@ typename vector<T>::const_iterator vector<T>::end() const {
 template <class T>
 typename vector<T>::size_type vector<T>::size() const {
     return avail - head;
+}
+
+template <class T>
+typename vector<T>::size_type vector<T>::max_size() const {
+    return (size_t) - 1;
 }
 
 template <class T>
