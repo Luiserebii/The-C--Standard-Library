@@ -1,6 +1,7 @@
 # The C++ Standard Library
 ![GitHub](https://img.shields.io/github/license/Luiserebii/The-C--Standard-Library?color=red)
 [![CircleCI](https://circleci.com/gh/Luiserebii/The-C--Standard-Library.svg?style=svg)](https://circleci.com/gh/Luiserebii/The-C--Standard-Library)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d6c94857aae342cd95bcbaed9dce88df)](https://www.codacy.com/manual/Luiserebii/The-C--Standard-Library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Luiserebii/The-C--Standard-Library&amp;utm_campaign=Badge_Grade)
 
 An implementation of the C++ standard library, for fun, and for practice.
 
