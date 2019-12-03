@@ -289,15 +289,10 @@ void vector<T>::append(T e) {
         head = n;
         avail = n + old_size;
         tail = n + sz;
-
-        //Append
-        alloc.construct(avail, e);
-        ++avail;
-        
-    } else {
-        alloc.construct(avail, e);
-        ++avail;
     }
+
+    //Append
+    alloc.construct(avail++, e);
 }
 
 template <class T>
