@@ -1,5 +1,5 @@
 #include "../lib/mint/mint.h"
-#include "../../algorithm/algorithm.h"
+#include "../../include/algorithm/algorithm.h"
 
 #include <iostream>
 #include <algorithm>

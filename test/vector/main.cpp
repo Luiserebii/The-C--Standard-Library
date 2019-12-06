@@ -1,5 +1,5 @@
 #include "../lib/mint/mint.h"
-#include "../../vector/vector.h"
+#include "../../include/vector/vector.h"
 
 #include <iostream>
 #include <string>
