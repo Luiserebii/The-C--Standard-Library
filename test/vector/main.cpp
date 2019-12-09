@@ -1,5 +1,5 @@
-#include "../lib/mint/mint.h"
 #include "../../include/vector/vector.h"
+#include "../lib/mint/mint.h"
 
 #include <iostream>
 #include <string>
@@ -18,7 +18,6 @@ int main() {
     addingElements(m);
 
     return m.end();
-
 }
 
 void initialize(Mint& m) {
@@ -35,5 +34,3 @@ void addingElements(Mint& m) {
     m.equal(v.size(), 1UL, "Vector has size 1 after one push_back()");
     m.equal(v[0], el1, "Vector element added is as expected (using operator[])");
 }
-
-

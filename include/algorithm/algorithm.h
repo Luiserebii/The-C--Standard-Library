@@ -51,9 +51,8 @@ Out copy(In begin, In end, Out dest) {
     return dest;
 }
 
-
 template <class In>
-In search(In begin, In end, In begin2, In end2) { 
+In search(In begin, In end, In begin2, In end2) {
     while(begin != end) {
         //If b == begin2, step into a loop to check each val, until b2 == e2
         if(*begin == *begin2) {
@@ -63,19 +62,19 @@ In search(In begin, In end, In begin2, In end2) {
                     break;
                 }
                 //If at any point, we hit b == end, we know we went too far, so just return b
-                if(b == end) { 
-                    return b; 
+                if(b == end) {
+                    return b;
                 }
             }
             //If we hit the end, we found it~
-            if(b2 == end2) { return begin; }
+            if(b2 == end2) {
+                return begin;
+            }
         }
         ++begin;
     }
     return begin;
 }
-
 }
-
 
 #endif
