@@ -23,7 +23,7 @@ AlwaysBreakTemplateDeclarations: true
 BinPackArguments: true 
 BinPackParameters: true
 BraceWrapping:   
-  AfterClass:      false
+  AfterClass:      false # Sure, I think
   AfterControlStatement: false
   AfterEnum:       false
   AfterFunction:   false
@@ -34,20 +34,19 @@ BraceWrapping:
   BeforeCatch:     false
   BeforeElse:      false
   IndentBraces:    false
-BreakBeforeBinaryOperators: None
-BreakBeforeBraces: Attach
+BreakBeforeBinaryOperators: All # Was None; I like the breaking before operators when things get too long
+BreakBeforeBraces: Attach # Sure
 BreakBeforeTernaryOperators: true
-BreakConstructorInitializersBeforeComma: false
+BreakConstructorInitializersBeforeComma: false # Sure
 ColumnLimit:     120
-CommentPragmas:  '^ IWYU pragma:'
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
-ConstructorInitializerIndentWidth: 4
-ContinuationIndentWidth: 4
+CommentPragmas:  '^ IWYU pragma:' # OwO
+ConstructorInitializerAllOnOneLineOrOnePerLine: true # Sure
+ConstructorInitializerIndentWidth: 4 # Sure
+ContinuationIndentWidth: 4 # Sure
 Cpp11BracedListStyle: true
-DerivePointerAlignment: true
-DisableFormat:   false
-ExperimentalAutoDetectBinPacking: false
-ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
+DerivePointerAlignment: true # Sure
+DisableFormat:   false 
+ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ] # OwO
 IncludeCategories: 
   - Regex:           '^<.*\.h>'
     Priority:        1
@@ -56,7 +55,7 @@ IncludeCategories:
   - Regex:           '.*'
     Priority:        3
 IndentCaseLabels: true
-IndentWidth:     2
+IndentWidth:     4
 IndentWrappedFunctionNames: false
 KeepEmptyLinesAtTheStartOfBlocks: false
 MacroBlockBegin: ''
