@@ -84,7 +84,7 @@ SpacesInContainerLiterals: false # Was true
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard:        c++03 # Was Auto
+Standard:        Cpp03 # Was Auto
 TabWidth:        8
 UseTab:          Never
 ...
