@@ -3,13 +3,13 @@ Language:        Cpp
 # BasedOnStyle:  Google
 # Any comments will probably be directed towards settings that I'm not 100% certain on
 # If no comments exist, it means I've approved it 100%
-AccessModifierOffset: -1 # Uncertain on what this does
+AccessModifierOffset: -2 # Was -1, doubling this to mimick Google's offset logic
 AlignAfterOpenBracket: Align # Sure, this is probably fine, but I think I tend to use DontAlign
 AlignConsecutiveAssignments: false
 AlignConsecutiveDeclarations: false
 AlignEscapedNewlinesLeft: true # Sure
 AlignOperands:   true # Sure
-AlignTrailingComments: false # This was true, but I don't thing I want a linter to force this
+AlignTrailingComments: false # This was true, but I don't think I want a linter to force this
 AllowAllParametersOfDeclarationOnNextLine: true # Sure
 AllowShortBlocksOnASingleLine: false # Uncertain on this; but sure
 AllowShortCaseLabelsOnASingleLine: false 
@@ -34,7 +34,7 @@ BraceWrapping:
   BeforeCatch:     false
   BeforeElse:      false
   IndentBraces:    false
-BreakBeforeBinaryOperators: All # Was None; I like the breaking before operators when things get too long
+BreakBeforeBinaryOperators: None # Was None; I like the breaking before operators when things get too long
 BreakBeforeBraces: Attach # Sure
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: false # Sure
