@@ -24,53 +24,56 @@
 
 namespace lsb {
 
-template <class In> bool equal(In begin, In end, In begin2) {
-  while (*begin != *end) {
-    if (*begin != *begin2) {
-      return false;
-    }
-    ++begin, ++begin2;
-  }
-  return true;
-}
-
-template <class In, class T> In find(In begin, In end, T val) {
-  while (begin != end && *begin != val) {
-    ++begin;
-  }
-  return begin;
-}
-
-template <class In, class Out> Out copy(In begin, In end, Out dest) {
-  while (begin != end) {
-    *dest++ = *begin++;
-  }
-  return dest;
-}
-
-template <class In> In search(In begin, In end, In begin2, In end2) {
-  while (begin != end) {
-    // If b == begin2, step into a loop to check each val, until b2 == e2
-    if (*begin == *begin2) {
-      In b2 = begin2;
-      for (In b = begin; b2 != end2; ++b, ++b2) {
-        if (*b != *b2) {
-          break;
+template <class In>
+bool equal(In begin, In end, In begin2) {
+    while(*begin != *end) {
+        if(*begin != *begin2) {
+            return false;
         }
-        // If at any point, we hit b == end, we know we went too far, so just
-        // return b
-        if (b == end) {
-          return b;
-        }
-      }
-      // If we hit the end, we found it~
-      if (b2 == end2) {
-        return begin;
-      }
+        ++begin, ++begin2;
     }
-    ++begin;
-  }
-  return begin;
+    return true;
+}
+
+template <class In, class T>
+In find(In begin, In end, T val) {
+    while(begin != end && *begin != val) {
+        ++begin;
+    }
+    return begin;
+}
+
+template <class In, class Out>
+Out copy(In begin, In end, Out dest) {
+    while(begin != end) {
+        *dest++ = *begin++;
+    }
+    return dest;
+}
+
+template <class In>
+In search(In begin, In end, In begin2, In end2) {
+    while(begin != end) {
+        //If b == begin2, step into a loop to check each val, until b2 == e2
+        if(*begin == *begin2) {
+            In b2 = begin2;
+            for(In b = begin; b2 != end2; ++b, ++b2) {
+                if(*b != *b2) {
+                    break;
+                }
+                //If at any point, we hit b == end, we know we went too far, so just return b
+                if(b == end) {
+                    return b;
+                }
+            }
+            //If we hit the end, we found it~
+            if(b2 == end2) {
+                return begin;
+            }
+        }
+        ++begin;
+    }
+    return begin;
 }
 }
 

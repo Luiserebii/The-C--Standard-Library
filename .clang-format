@@ -39,7 +39,8 @@ BreakBeforeBraces: Attach # Sure
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: false # Sure
 ColumnLimit:     120
-CommentPragmas:  '^ IWYU pragma:' # OwO
+CommentPragmas:  '^[^ ]' # Don't mess with comments that start with chars other than space, e.g. no space after comment delimiter
+# # Used to be: CommentPragmas:  '^ IWYU pragma:' # OwO
 ConstructorInitializerAllOnOneLineOrOnePerLine: true # Sure
 ConstructorInitializerIndentWidth: 4 # Sure
 ContinuationIndentWidth: 4 # Sure
