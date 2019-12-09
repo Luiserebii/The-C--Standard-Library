@@ -29,99 +29,95 @@ namespace lsb {
 template <class T>
 class vector {
 
-    public:
-        typedef T value_type;
+  public:
+    typedef T value_type;
 
-        typedef T* iterator;
-        typedef const T* const_iterator;
+    typedef T* iterator;
+    typedef const T* const_iterator;
 
-        typedef T& reference;
-        typedef const T& const_reference;
+    typedef T& reference;
+    typedef const T& const_reference;
 
-        typedef size_t size_type;
+    typedef size_t size_type;
 
-        typedef std::allocator<T> allocator_type;
+    typedef std::allocator<T> allocator_type;
 
-        /**
-         * Constructors
-         */
-        vector();
-        vector(size_type n, const T& val);
-        vector(T* b, T* e);
+    /**
+     * Constructors
+     */
+    vector();
+    vector(size_type n, const T& val);
+    vector(T* b, T* e);
 
-        /**
-         * Copy, assign, destroy
-         */
-        vector(const vector&);
-        vector& operator=(const vector&);
-        ~vector();
+    /**
+     * Copy, assign, destroy
+     */
+    vector(const vector&);
+    vector& operator=(const vector&);
+    ~vector();
 
-        /**
-         * Iterators
-         */
-        iterator begin();
-        const_iterator begin() const;
+    /**
+     * Iterators
+     */
+    iterator begin();
+    const_iterator begin() const;
 
-        iterator end();
-        const_iterator end() const;
+    iterator end();
+    const_iterator end() const;
 
-        /**
-         * Capacity
-         */
-        size_type size() const;
-        size_type max_size() const;
-        bool empty() const;
-        size_type capacity() const;
+    /**
+     * Capacity
+     */
+    size_type size() const;
+    size_type max_size() const;
+    bool empty() const;
+    size_type capacity() const;
 
-        /**
-         * Element access
-         */
-        reference operator[](size_type n);
-        const_reference operator[](size_type n) const;
+    /**
+     * Element access
+     */
+    reference operator[](size_type n);
+    const_reference operator[](size_type n) const;
 
-        reference at(size_type n);
-        const_reference at(size_type n) const;
+    reference at(size_type n);
+    const_reference at(size_type n) const;
 
-        reference front();
-        const_reference front() const;
+    reference front();
+    const_reference front() const;
 
-        reference back();
-        const_reference back() const;
+    reference back();
+    const_reference back() const;
 
-        /**
-         * Modifiers
-         */
-        void push_back(T e);
-        void pop_back();
-        void clear();
+    /**
+     * Modifiers
+     */
+    void push_back(T e);
+    void pop_back();
+    void clear();
 
-        /**
-         * Allocator
-         */
-        allocator_type get_allocator() const;
+    /**
+     * Allocator
+     */
+    allocator_type get_allocator() const;
 
-    private:
-        T* head;
-        T* avail;
-        T* tail;
+  private:
+    T* head;
+    T* avail;
+    T* tail;
 
-        std::allocator<T> alloc;
+    std::allocator<T> alloc;
 
-        void construct(T* b, T* e);
-        void construct(size_type n, const T& val);
-        void append(T e);
-        void destroy();
-
+    void construct(T* b, T* e);
+    void construct(size_type n, const T& val);
+    void append(T e);
+    void destroy();
 };
-
 
 /**
  * Constructors
  */
 template <class T>
-vector<T>::vector(): head(0), avail(0), tail(0) {
-    
-}
+vector<T>::vector() : head(0), avail(0), tail(0) {}
 
 template <class T>
 vector<T>::vector(size_type n, const T& val) {
@@ -191,7 +187,7 @@ typename vector<T>::size_type vector<T>::size() const {
 
 template <class T>
 typename vector<T>::size_type vector<T>::max_size() const {
-    return (size_t) - 1;
+    return (size_t) -1;
 }
 
 template <class T>
@@ -203,7 +199,6 @@ template <class T>
 bool vector<T>::empty() const {
     return size() == 0;
 }
-
 
 /**
  * Element access
@@ -286,7 +281,6 @@ typename vector<T>::allocator_type vector<T>::get_allocator() const {
     return alloc;
 }
 
-
 /**
  * Private - Implementation
  */
@@ -340,7 +334,6 @@ void vector<T>::destroy() {
     alloc.deallocate(head, sz);
     head = avail = tail = 0;
 }
-
 }
 
 #endif
