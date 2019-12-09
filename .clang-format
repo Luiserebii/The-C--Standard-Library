@@ -76,15 +76,15 @@ ReflowComments:  true # Sure
 SortIncludes:    true 
 SpaceAfterCStyleCast: true # Was false; this is something we want, I think
 SpaceBeforeAssignmentOperators: true
-SpaceBeforeParens: ControlStatements
+SpaceBeforeParens: Never # Ahhh, yes, this is the option for controlling that... hm. ControlStatements option is very likely the convention, but, I will actually set this to Never due to personal preference
 SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 2
+SpacesBeforeTrailingComments: 1 # Was 2; I can see how 2 might be nice, but 1 is fine
 SpacesInAngles:  false
-SpacesInContainerLiterals: true
+SpacesInContainerLiterals: false # Was true
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard:        Auto
+Standard:        c++03 # Was Auto
 TabWidth:        8
 UseTab:          Never
 ...
