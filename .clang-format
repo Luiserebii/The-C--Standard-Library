@@ -1,24 +1,26 @@
 ---
 Language:        Cpp
 # BasedOnStyle:  Google
-AccessModifierOffset: -1
-AlignAfterOpenBracket: Align
+# Any comments will probably be directed towards settings that I'm not 100% certain on
+# If no comments exist, it means I've approved it 100%
+AccessModifierOffset: -1 # Uncertain on what this does
+AlignAfterOpenBracket: Align # Sure, this is probably fine, but I think I tend to use DontAlign
 AlignConsecutiveAssignments: false
 AlignConsecutiveDeclarations: false
-AlignEscapedNewlinesLeft: true
-AlignOperands:   true
-AlignTrailingComments: true
-AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortBlocksOnASingleLine: false
-AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: All
+AlignEscapedNewlinesLeft: true # Sure
+AlignOperands:   true # Sure
+AlignTrailingComments: false # This was true, but I don't thing I want a linter to force this
+AllowAllParametersOfDeclarationOnNextLine: true # Sure
+AllowShortBlocksOnASingleLine: false # Uncertain on this; but sure
+AllowShortCaseLabelsOnASingleLine: false 
+AllowShortFunctionsOnASingleLine: Inline # Was All, I think that only really inline should have this
 AllowShortIfStatementsOnASingleLine: true
 AllowShortLoopsOnASingleLine: true
-AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None # A note that this is deprecated
 AlwaysBreakAfterReturnType: None
-AlwaysBreakBeforeMultilineStrings: true
+AlwaysBreakBeforeMultilineStrings: true # Sure
 AlwaysBreakTemplateDeclarations: true
-BinPackArguments: true
+BinPackArguments: true 
 BinPackParameters: true
 BraceWrapping:   
   AfterClass:      false
