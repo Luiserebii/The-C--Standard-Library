@@ -35,8 +35,8 @@ bool equal(In begin, In end, In begin2) {
     return true;
 }
 
-template <class In, class    T>
-In find(In begin, In end,                        T val) {
+template <class In, class T>
+In find(In begin, In end, T val) {
     while(begin != end && *begin != val) {
         ++begin;
     }
@@ -44,8 +44,8 @@ In find(In begin, In end,                        T val) {
 }
 
 template <class In, class Out>
-Out copy(In begin,           In end, Out dest) {
-                    while(begin != end) {
+Out copy(In begin, In end, Out dest) {
+    while(begin != end) {
         *dest++ = *begin++;
     }
     return dest;
