@@ -13,7 +13,7 @@ jobs:
     steps:
       - run:
           name: Install clang-format
-          command: apt-get update && apt-get install -y clang-format
+          command: apt-get update && apt-get install -y git clang-format
       - checkout
       - run: 
           name: Linter
