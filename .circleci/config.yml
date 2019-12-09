@@ -7,8 +7,20 @@ aliases:
       - image: debian:stretch
 
 jobs:
+
+  lint: 
+    <<: *defaults
+    steps:
+      - run:
+          name: Install clang-format
+          command: apt-get install clang-format
+      - checkout
+      - run: 
+          name: Linter
+          command: ./lint.sh && if [[ `git status --porcelain` ]]; then exit 1; else exit 0; fi
+
   # Building and running examples
-  tests:
+  test:
     <<: *defaults
     steps:
       - run: 
@@ -26,4 +38,5 @@ workflows:
   version: 2
   everything:
     jobs: # For reference, all jobs run in parallel
-      - tests
+      - lint
+      - test
