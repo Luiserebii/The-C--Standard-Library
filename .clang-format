@@ -57,24 +57,24 @@ IncludeCategories:
 IndentCaseLabels: true
 IndentWidth:     4
 IndentWrappedFunctionNames: false
-KeepEmptyLinesAtTheStartOfBlocks: false
-MacroBlockBegin: ''
-MacroBlockEnd:   ''
+KeepEmptyLinesAtTheStartOfBlocks: true # Was false; I'd rather keep this loose
+MacroBlockBegin: '' # OwO
+MacroBlockEnd:   '' # OwO
 MaxEmptyLinesToKeep: 1
-NamespaceIndentation: None
-ObjCBlockIndentWidth: 2
-ObjCSpaceAfterProperty: false
+NamespaceIndentation: None # I'm tempted to select Inner here, but I've never quite done this
+ObjCBlockIndentWidth: 4 # OwO
+ObjCSpaceAfterProperty: false 
 ObjCSpaceBeforeProtocolList: false
-PenaltyBreakBeforeFirstCallParameter: 1
+PenaltyBreakBeforeFirstCallParameter: 1 # Penalty OwO - Penalty game??? Yugioh! Zero????
 PenaltyBreakComment: 300
 PenaltyBreakFirstLessLess: 120
 PenaltyBreakString: 1000
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Left
-ReflowComments:  true
-SortIncludes:    true
-SpaceAfterCStyleCast: false
+ReflowComments:  true # Sure
+SortIncludes:    true 
+SpaceAfterCStyleCast: true # Was false; this is something we want, I think
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false
