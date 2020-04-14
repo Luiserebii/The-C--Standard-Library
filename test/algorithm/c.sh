@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ main.cpp && ./a.out
+g++ -Wall -Wextra main.cpp && ./a.out
